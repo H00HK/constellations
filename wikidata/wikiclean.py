@@ -3,6 +3,7 @@
 
 import re
 from xml.dom.minidom import parse, parseString
+import glob
 
 def remove_refs(text):
     '''Function to remove all references '''
@@ -201,12 +202,13 @@ def main():
     '''Main function of the program. It reads the downloaded wiki xml file and cleans 
     the html and wiki markup and writes the data to another file for further processing.
     '''
-    print 'reading file t022.txt'
-    fname = 't022.txt'
-    wiki_text = read_file(fname)
-    clean_text = remove_wiki_markup(wiki_text)
-    print 'writing to Antlia.html'
-    write_file('Antlia.html', '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div style="white-space: pre-wrap;">' +clean_text+'</div></body></html>')
+    for fname in glob.glob("*.txt"):
+      print "reading " + fname
+      wiki_text = read_file(fname)
+      clean_text = remove_wiki_markup(wiki_text)
+      hfname = fname.split(".")[0]+ ".html"
+      print 'writing to ' + hfname
+      write_file(hfname, '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div style="white-space: pre-wrap;">' +clean_text+'</div></body></html>')
     print 'done'
     
 
