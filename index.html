@@ -15,7 +15,17 @@
         document.getElementById("objectlink").setAttribute("data","wikidata/" + cname + ".html");
         document.getElementById("imageh1").innerHTML=cname;
         document.getElementById("detailh1").innerHTML=cname;
-      };      
+      };
+      function ScaleContentToDevice(){ 
+        scroll(0, 0); 
+        var contentheight = $.mobile.getScreenHeight() - $(".ui-header").outerHeight() 
+                      - $(".ui-footer").outerHeight() - $(".ui-content").outerHeight() 
+                      + $(".ui-content").height(); 
+        $(".ui-content").height(contentheight); 
+        //alert("height set to" + contentheight);
+      };
+      $(document).on( "pageshow", function(){ ScaleContentToDevice(); }); 
+      $(window).on("resize orientationchange", function(){ ScaleContentToDevice(); });
     </script>
   </head>
   <body>
@@ -48,14 +58,14 @@
         });
       </script>      
     </div>
-    <div data-role="page" id="image" data-theme="a">
+    <div data-role="page" id="image" data-theme="a" width="device-width">
       <div data-role="header">
         <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
         <h1 id="imageh1"></h1>
         <a href="#detail" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>        
       </div>
       <div data-role="main" class="ui-content">
-        <image id="imglink" src="#"></image>
+        <center><img id="imglink" src="#" style="width: 100%" ></img></center>
       </div>
     </div>
     <div data-role="page" id="detail" data-theme="a">
