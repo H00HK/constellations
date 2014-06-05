@@ -64,6 +64,8 @@ def cleanup(html):
   parser = MyHtmlParser()
   parser.feed(html)
   s = parser.mydata
+  index = s.find('Abbreviation')
+  s = s[index:]
   index = s.find('Retrieved from')
   index2 = s.find('\n',index)
   link = s[index:index2]
@@ -71,7 +73,7 @@ def cleanup(html):
   if index != -1:
     s= s[:index]
   s += '\n' + link + '\n'
-  s = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div style="white-space: pre-wrap;">' + s + '</div></body></html>'
+  s = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div style="white-space: pre-wrap;">\n' + s + '</div></body></html>'
   s = s.replace('[edit]','')
   s = s.replace("\\'","'")
   s = re.sub('\[\d+\]','',s)
