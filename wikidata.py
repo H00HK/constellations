@@ -83,6 +83,7 @@ def write_file(filename, text):
         f.write(text)
 
 def process(c, url):
+  print(c)
   headers = {'User-Agent' : 'datapull by gituser1357 (nologin)'}
   req = urllib.request.Request(url,None,headers)
   res = urllib.request.urlopen(req)
