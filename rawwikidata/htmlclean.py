@@ -21,13 +21,15 @@ class MyHtmlParser(HTMLParser):
     pass
   def handle_entityref(self,name):
     c=chr(name2codepoint[name])
-    self.mydata += c
+    if self.flag:
+      self.mydata += c
   def handle_charref(self,name):
     if name.startswith('x'):
       c=chr(int(name[1:],16))
     else:
       c=chr(int(name))
-    self.mydata += c
+    if self.flag:
+      self.mydata += c
   def handle_decl(self,data):
     pass
 
