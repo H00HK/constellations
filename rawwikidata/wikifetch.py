@@ -5,14 +5,9 @@
 import urllib.request
 import time 
 
-def gettext(html):
-  soup = BeautifulSoup(html)
-  return(str(soup.body))
-
-
 def write_file(filename, text):
     '''Utility function to write a unicode file '''
-    with open(filename, mode='w') as f:
+    with open(filename, mode='w', encoding='utf-8') as f:
         f.write(text)
 
 def main():
@@ -56,8 +51,14 @@ def main():
     'Pisces','Sagittarius',
     'Sculptor',
     'Taurus',
-    'Vela','Virgo'];      
-  for c in constellations1:
+    'Vela','Virgo'];
+  url = baseurl + 'Andromeda_(constellation)'  
+  req = urllib.request.Request(url,None,headers)
+  res = urllib.request.urlopen(req)
+  htmldata = str(res.read())
+  write_file(('Andromeda').replace('_','') + '.html',htmldata)
+  #time.sleep(5)          
+  '''for c in constellations1:
     url = baseurl + c  
     req = urllib.request.Request(url,None,headers)
     res = urllib.request.urlopen(req)
@@ -70,7 +71,7 @@ def main():
     res = urllib.request.urlopen(req)
     htmldata = str(res.read())
     write_file((c).replace('_','') + '.html',htmldata)
-    time.sleep(5)    
+    time.sleep(5)'''    
     
 
 
