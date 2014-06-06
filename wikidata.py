@@ -146,15 +146,15 @@ def main():
     'Sculptor',
     'Taurus',
     'Vela','Virgo'];          
-  c = 'Andromeda'
+  '''c = 'Andromeda'
   url = baseurl + c + '_(constellation)'  
-  process(c, url)
-  '''for c in constellations1:
+  process(c, url)'''
+  for c in constellations1:
     url = baseurl + c  
     process(c, url)
   for c in constellations2:
     url = baseurl + c + '_(constellation)'
-    process(c, url)'''      
+    process(c, url)      
 
 if __name__ == '__main__':
   main()
