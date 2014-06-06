@@ -13,10 +13,14 @@ class MyHtmlParser(HTMLParser):
   def __init__(self):
     HTMLParser.__init__(self)
     self.flag=False
+    self.nottocflag = True
     self.mydata = ''
   def handle_starttag(self, tag, attrs):
     if tag == "body":
       self.flag =True
+    for attr in attrs:
+      if attr[1] in ('toc', 'toctitle','tocnumber','toctext'):  
+        self.nottocflag = False
   def handle_endtag(self,tag):
     if tag == "body":
       self.flag =False  
@@ -29,8 +33,9 @@ class MyHtmlParser(HTMLParser):
     elif tag == 'br':
       self.mydata += ' '     
   def handle_data(self,data):
-    if self.flag:
+    if self.flag and self.nottocflag:
       self.mydata += data
+    self.nottocflag = True
   def handle_comment(self,comment):
     pass
   def handle_entityref(self,name):
@@ -65,10 +70,12 @@ def cleanup(html):
   parser.feed(html)
   s = parser.mydata
   index = s.find('Abbreviation')
-  s = s[index:]
+  if index != -1:  
+    s = s[index:]
   index = s.find('Retrieved from')
   index2 = s.find('\n',index)
-  link = s[index:index2]
+  if index != -1 and index2 != 1:  
+    link = s[index:index2]
   index = s.rfind('External links')
   if index != -1:
     s= s[:index]
@@ -135,15 +142,15 @@ def main():
     'Sculptor',
     'Taurus',
     'Vela','Virgo'];          
-  '''c = 'Andromeda'
+  c = 'Andromeda'
   url = baseurl + c + '_(constellation)'  
-  process(c, url)'''
-  for c in constellations1:
+  process(c, url)
+  '''for c in constellations1:
     url = baseurl + c  
     process(c, url)
   for c in constellations2:
     url = baseurl + c + '_(constellation)'
-    process(c, url)      
+    process(c, url)'''      
 
 if __name__ == '__main__':
   main()
