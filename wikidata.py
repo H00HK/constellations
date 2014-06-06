@@ -18,6 +18,8 @@ class MyHtmlParser(HTMLParser):
   def handle_starttag(self, tag, attrs):
     if tag == "body":
       self.flag =True
+    if tag in ('div', 'h1','h2','h3'):
+      self.mydata += '\n'      
     for attr in attrs:
       if attr[1] in ('toc', 'toctitle','tocnumber','toctext'):  
         self.nottocflag = False
@@ -84,6 +86,8 @@ def cleanup(html):
   s = s.replace('[edit]','')
   s = s.replace("\\'","'")
   s = re.sub('\[\d+\]','',s)
+  s = re.sub('\n(\s)+\n','\n',s)
+  s = re.sub('\n(\n)+','\n\n',s)
   return s    
                       
 def write_file(filename, text):
