@@ -75,9 +75,6 @@
           var b = $("#detailheader").outerHeight(true);
           var ht = a - b;
           $("#detailcontent").height(ht).trigger("updatelayout");
-        });
-        $(document).on('orientationchange resize',"#detail", function(event){
-          $(document).trigger("updatelayout");
         });        
       </script>            
     </div>
