@@ -3,7 +3,7 @@
   <head>
     <title>Constellations</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">              
     <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.2.css" />
     <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.2.css" />
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.css" /> 
@@ -21,7 +21,7 @@
   <body>
   
     <div data-role="page" id="home" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header">
         <h1>Constellations</h1>
       </div>
       <!--<ul id="constellationlist" data-role="listview">
@@ -38,11 +38,11 @@
           'SerpensCaput','SerpensCauda','Sextans','Taurus','Telescopium','Triangulum','TriangulumAustrale','Tucana','UrsaMajor','UrsaMinor','Vela','Virgo',
           'Volans','Vulpecula'];
           var arrayLength = clist.length;
-          var listhtml = '<ul id="constellationlist" data-role="listview">';
+          var listhtml = '<div data-role="main" class="ui-content"><ul id="constellationlist" data-role="listview">';
           for(var i =0; i<arrayLength; i++){
             listhtml+= '<li><a href="#image" onClick=\"setname(\'' + clist[i] + '\')\">' + clist[i] + '</a></li>';
           };
-          listhtml+= '</ul>';
+          listhtml+= '</ul></div>';
           $(listhtml).appendTo("#home").enhanceWithin();
         });
       </script>      
@@ -50,7 +50,7 @@
     
     
     <div data-role="page" id="image" data-theme="a" width="device-width">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header">
         <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
         <h1 id="imageh1"></h1>
         <a href="#detail" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>        
@@ -58,11 +58,17 @@
       <div data-role="main" class="ui-content">
         <center><img id="imglink" src="#" width="100%"></img></center>
       </div>
+      <script>
+        $(document).on("pagebeforecreate","#image",function(event){
+          $.mobile.zoom.enable(true);
+          alert($.mobile.zoom.enabled + ' ' + $.mobile.zoom.locked); 
+        });      
+      </script>
     </div>
     
     
     <div data-role="page" id="detail" data-theme="a">
-      <div data-role="header" data-position="fixed" id="detailheader">
+      <div data-role="header" id="detailheader">
         <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
         <h1 id="detailh1"></h1>
       </div>
