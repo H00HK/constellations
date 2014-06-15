@@ -73,7 +73,7 @@
         $(document).on('pageshow',"#detail", function(event){
           var a = $(".ui-mobile").height();
           var b = $("#detailheader").outerHeight(true);
-          var ht = a - b;
+          var ht = a - b - 4; //magic 4 px to account for unknown padding
           $("#detailcontent").height(ht).trigger("updatelayout");
         });        
       </script>            
