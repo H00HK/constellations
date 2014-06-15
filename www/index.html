@@ -3,7 +3,7 @@
   <head>
     <title>Constellations</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">              
+    <meta name="viewport" content="width=device-width, initial-scale=1">              
     <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.2.css" />
     <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.2.css" />
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.css" /> 
@@ -58,12 +58,6 @@
       <div data-role="main" class="ui-content">
         <center><img id="imglink" src="#" width="100%"></img></center>
       </div>
-      <script>
-        $(document).on("pagebeforecreate","#image",function(event){
-          $.mobile.zoom.enable(true);
-          alert($.mobile.zoom.enabled + ' ' + $.mobile.zoom.locked); 
-        });      
-      </script>
     </div>
     
     
