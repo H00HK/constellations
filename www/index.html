@@ -51,14 +51,16 @@
     </div>
     
     
-    <div data-role="page" id="image" data-theme="a" width="device-width">
+    <div data-role="page" id="image" data-theme="a">
       <div data-role="header">
         <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
         <h1 id="imageh1"></h1>
         <a href="#detail" class="ui-btn ui-icon-info ui-btn-icon-right">Info</a>        
       </div>
-      <div data-role="main" class="ui-content">
-        <center><img id="imglink" src="#" width="100%"></img></center>
+      <div role="main" class="ui-content">
+        <div class="ui-body ui-body-a">
+          <img id="imglink" src="" width="100%"></img>
+        </div>  
       </div>
     </div>
     
@@ -68,17 +70,21 @@
         <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
         <h1 id="detailh1"></h1>
       </div>
-      <div data-role="main" class="ui-content" id="detailcontent" style="padding:0px" >
-        <embed id="embedlink" src="#" width="100%" height="99%"></embed>
-      </div>  
+      <div role="main" class="ui-content" id="detailcontent" style="padding:0px">
+        <div class="ui-body ui-body-a" id="detailbody" style="padding:0px; border-width:0px">
+          <embed id="embedlink" src="" width="100%"></embed>
+        </div>  
+      </div> 
       <script>
         $(document).on('pageshow',"#detail", function(event){
           var a = $(".ui-mobile").height();
           var b = $("#detailheader").outerHeight(true);
-          var ht = a - b - 4; //magic 4 px to account for unknown padding
-          $("#detailcontent").height(ht).trigger("updatelayout");
+          var ht = a - b;
+          //$("#detailcontent").height(ht).trigger("updatelayout");
+          //$("#detailbody").height(ht).trigger("updatelayout");
+          $("#embedlink").height(ht - 4).trigger("updatelayout"); //4px magic
         });        
-      </script>            
+      </script>         
     </div>
     
   </body>
