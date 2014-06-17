@@ -13,7 +13,7 @@
     <script>
       function setname(cname){
         document.getElementById("imglink").setAttribute("src","IAUdata/" + cname + "_IAU.svg");
-        document.getElementById("embedlink").setAttribute("src","wikidata/" + cname + ".html");
+        document.getElementById("objectlink").setAttribute("data","wikidata/" + cname + ".html");
         document.getElementById("imageh1").innerHTML=cname;
         document.getElementById("detailh1").innerHTML=cname;   
       };
@@ -25,11 +25,11 @@
       <div data-role="header">
         <h1>Constellations</h1>
       </div>
-      <!--<div data-role="main" class="ui-content">
+      <div data-role="main" class="ui-content">
         <ul id="constellationlist" data-role="listview">
-          <li><a href="#image" onClick="setname('Antlia')">Antlia</a></li>
+          <!--<li><a href="#image" onClick="setname('Antlia')">Antlia</a></li>-->
         </ul> 
-      </div>-->
+      </div>
       <script>
         $(document).on('pagebeforecreate',"#home", function(event){
           var clist=['Andromeda',
@@ -41,12 +41,11 @@
           'SerpensCaput','SerpensCauda','Sextans','Taurus','Telescopium','Triangulum','TriangulumAustrale','Tucana','UrsaMajor','UrsaMinor','Vela','Virgo',
           'Volans','Vulpecula'];
           var arrayLength = clist.length;
-          var listhtml = '<div data-role="main" class="ui-content"><ul id="constellationlist" data-role="listview">';
+          var listhtml = '';
           for(var i =0; i<arrayLength; i++){
             listhtml+= '<li><a href="#image" onClick=\"setname(\'' + clist[i] + '\')\">' + clist[i] + '</a></li>';
           };
-          listhtml+= '</ul></div>';
-          $(listhtml).appendTo("#home").enhanceWithin();
+          $(listhtml).appendTo("#constellationlist").enhanceWithin();
         });
       </script>      
     </div>
@@ -73,7 +72,7 @@
       </div>
       <div role="main" class="ui-content" id="detailcontent" style="padding:0px">
         <div class="ui-body ui-body-a" id="detailbody" style="padding:0px; border-width:0px">
-          <embed id="embedlink" src="" width="100%"></embed>
+          <object id="objectlink" data="" width="100%"></embed>
         </div>  
       </div> 
       <script>
@@ -83,7 +82,7 @@
           var ht = a - b;
           //$("#detailcontent").height(ht).trigger("updatelayout");
           //$("#detailbody").height(ht).trigger("updatelayout");
-          $("#embedlink").height(ht - 4).trigger("updatelayout"); //4px magic
+          $("#objectlink").height(ht - 4).trigger("updatelayout"); //4px magic
         });        
       </script>         
     </div>
