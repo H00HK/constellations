@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.phg.constellations" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://cordova.apache.org/ns/1.0">
+    <name>Constellations</name>
+    <description>
+        Reference app for star charts and detail info on the 88 modern constellations. Data and the IAU star charts are from Wikipedia. 
+    </description>
+    <author email="gmuser1357@gmail.com" href="http://github.com/gituser1357/constellations">
+        gmuser1357
+    </author>
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="fullscreen" value="false" />
+    <icon src="icon.png" />  
+    <content src="index.html" />     
+    <access origin="" />
+</widget>
