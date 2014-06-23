@@ -4,7 +4,7 @@
     <description>
         Reference app for star charts and detail info on the 88 modern constellations. Data and the IAU star charts are from Wikipedia. 
     </description>
-    <author email="gmuser1357@gmail.com" href="http://github.com/gituser1357/constellations">
+    <author email="gituser1357" href="http://github.com/gituser1357/constellations">
         gmuser1357
     </author>
     <preference name="permissions" value="none" />
