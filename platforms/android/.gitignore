@@ -2,4 +2,6 @@
 */*
 !ant.properties
 !.gitignore
+!**/Constellations.java
+
 
