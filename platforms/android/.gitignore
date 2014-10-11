@@ -2,6 +2,6 @@
 */*
 !ant.properties
 !.gitignore
-!**/Constellations.java
+!src/com/pgh/constellations/Constellations.java
 
 
