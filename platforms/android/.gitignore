@@ -1,7 +1,0 @@
-*.*
-*/*
-!ant.properties
-!.gitignore
-!src/com/phg/constellations/Constellations.java
-
-
