@@ -8,8 +8,8 @@ android {
         applicationId "com.phg.constellations"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 10004
-        versionName "2.0.2"
+        versionCode 10005
+        versionName "2.0.3"
     }
     buildTypes {
         release {

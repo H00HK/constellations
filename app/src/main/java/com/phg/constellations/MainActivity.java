@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         final String[] constellation_names = getResources().getStringArray(R.array.constellation_names);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_selectable_list_item,
+                R.layout.list_item,
                 constellation_names);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(arrayAdapter);
